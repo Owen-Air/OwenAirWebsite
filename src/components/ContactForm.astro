@@ -1,0 +1,129 @@
+---
+import { services } from '../data/services';
+
+const serviceOptions = [...services.map((service) => service.title), 'Not sure yet'];
+---
+
+<form class="contact-form card" action="/api/contact" method="post" data-placeholder-handler="true">
+  <input type="text" name="companyWebsite" autocomplete="off" tabindex="-1" aria-hidden="true" class="honeypot" />
+
+  <div class="field-grid">
+    <label>
+      Name
+      <input type="text" name="name" autocomplete="name" required />
+    </label>
+
+    <label>
+      Email
+      <input type="email" name="email" autocomplete="email" required />
+    </label>
+  </div>
+
+  <div class="field-grid">
+    <label>
+      Phone (optional)
+      <input type="tel" name="phone" autocomplete="tel" />
+    </label>
+
+    <label>
+      Service needed
+      <select name="service" required>
+        <option value="">Select one</option>
+        {serviceOptions.map((option) => <option value={option}>{option}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <label>
+    Preferred contact method
+    <select name="preferredContact" required>
+      <option value="">Select one</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone</option>
+      <option value="either">Either is fine</option>
+    </select>
+  </label>
+
+  <label>
+    Message
+    <textarea name="message" rows="7" required></textarea>
+  </label>
+
+  <p class="form-note">
+    Not sure what category your problem fits into? Just describe it and I will point you in the right direction.
+  </p>
+
+  <p class="form-tech-note">
+    Placeholder form handling is in place. This can be connected to Cloudflare Workers, Turnstile,
+    email delivery and rate limiting later.
+  </p>
+
+  <button class="button button-primary" type="submit">Send request</button>
+</form>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1.3rem;
+  }
+
+  .field-grid {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  input,
+  select,
+  textarea {
+    appearance: none;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text);
+    font: inherit;
+    padding: 0.68rem 0.72rem;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: 2px solid transparent;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem var(--accent-soft);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 9rem;
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+  }
+
+  .form-note,
+  .form-tech-note {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .form-tech-note {
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 46rem) {
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,141 @@
+---
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { services } from '../data/services';
+
+const title = 'Practical technical help for businesses, venues, vans and websites | Owen Air';
+const description =
+  'Owen Air provides hands-on technical services on the Isle of Man across IT support, networking, websites, AV systems and van power.';
+
+const ldJson = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Owen Air Technical Services',
+  areaServed: 'Isle of Man',
+  url: 'https://owenair.im',
+  description,
+  serviceType: services.map((service) => service.title)
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
+  </Fragment>
+
+  <Hero
+    title="Practical technical help for businesses, venues, vans and websites."
+    subtitle="I design, fix and improve the systems people rely on — from Wi-Fi, websites and Microsoft 365 to AV racks, venue sound systems and off-grid van power."
+    primaryCta={{ href: '/contact', label: 'Request help' }}
+    secondaryCta={{ href: '/services', label: 'View services' }}
+    tertiaryCta={{ href: '/contact', label: 'Tell me what you need' }}
+  />
+
+  <section class="section" aria-labelledby="home-services-heading">
+    <div class="container flow">
+      <h2 class="section-title" id="home-services-heading">Services built around real-world technical work</h2>
+      <p class="section-lead">
+        I work across multiple technical domains, which means I can solve problems that cross boundaries.
+        If the issue touches IT, networking, web, AV or power, I can usually take ownership and simplify it.
+      </p>
+      <div class="grid grid-3">
+        {services.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={service.shortDescription}
+            href={`/services/${service.slug}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-help-heading">
+    <div class="container grid grid-2">
+      <article class="card flow">
+        <h2 class="section-title" id="home-help-heading">How I can help</h2>
+        <p class="section-lead">
+          You get practical support, clear communication and a focused plan. I explain options in plain
+          English, highlight trade-offs, and keep your system maintainable.
+        </p>
+        <ul class="check-list">
+          <li>Diagnostics first, then practical fixes that hold up in daily use</li>
+          <li>Local support on the Isle of Man with direct technical accountability</li>
+          <li>Clear advice on what to fix now versus what can wait</li>
+        </ul>
+      </article>
+
+      <article class="card flow">
+        <h2 class="section-title">Built for real-world problems</h2>
+        <p class="section-lead">
+          Technical setups are rarely neat. I am used to mixed systems, partial upgrades and inherited
+          infrastructure. The goal is reliable outcomes, not perfect diagrams.
+        </p>
+        <ul class="check-list">
+          <li>Comfortable with old and new equipment in the same environment</li>
+          <li>Focused on uptime, resilience and practical usability</li>
+          <li>Documentation and handover that non-engineers can follow</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-use-cases-heading">
+    <div class="container flow">
+      <h2 class="section-title" id="home-use-cases-heading">Example use cases</h2>
+      <div class="grid grid-3">
+        <article class="card flow">
+          <h3>Hospitality network cleanup</h3>
+          <p>
+            Reworked a venue network with separate VLANs for guest Wi-Fi, POS and staff systems to stop
+            service interruptions and reduce risk.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Website rebuild for local business</h3>
+          <p>
+            Replaced a slow legacy site with a fast Astro build on Cloudflare, improving mobile speed,
+            credibility and enquiry flow.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Van power upgrade planning</h3>
+          <p>
+            Mapped a staged lithium and solar upgrade around actual usage, so the owner could improve
+            reliability without replacing everything at once.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-why-heading">
+    <div class="container flow">
+      <h2 class="section-title" id="home-why-heading">Why work with me</h2>
+      <div class="grid grid-2">
+        <article class="card flow">
+          <h3>Engineer-led and hands-on</h3>
+          <p>
+            I do practical technical work directly rather than passing jobs through layers of account
+            management.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Standards without the nonsense</h3>
+          <p>
+            You get modern methods, reliable components and straightforward decision-making without buzzword-heavy process.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need practical help with a technical problem?"
+    text="Describe the issue in plain terms. If it sits between categories, I will still help you map the right fix."
+    primary={{ href: '/contact', label: 'Request help' }}
+    secondary={{ href: '/services', label: 'Explore services' }}
+  />
+</Layout>

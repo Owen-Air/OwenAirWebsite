@@ -1,0 +1,90 @@
+---
+import Layout from './Layout.astro';
+import CTASection from './CTASection.astro';
+import { services } from '../data/services';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const service = services.find((item) => item.slug === slug);
+
+if (!service) {
+  throw new Error(`Unknown service slug: ${slug}`);
+}
+
+const title = `${service.title} | Owen Air`;
+const description = `${service.shortDescription} Isle of Man practical technical service by Owen Air.`;
+
+const ldJson = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  description,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Owen Air Technical Services',
+    areaServed: 'Isle of Man'
+  }
+};
+---
+
+<Layout title={title} description={description} ogType="article">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(ldJson)}></script>
+  </Fragment>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="flow">
+        <p class="pill">Service</p>
+        <h1 class="section-title">{service.title}</h1>
+        <p class="section-lead">{service.intro}</p>
+        <p><strong>Who it is for:</strong> {service.audience}</p>
+        <div class="actions">
+          <a class="button button-primary" href="/contact">Request help</a>
+          <a class="button button-secondary" href="/services">All services</a>
+        </div>
+      </article>
+
+      <article class="card flow">
+        <h2>Common problems I solve</h2>
+        <ul class="check-list">
+          {service.commonProblems.map((problem) => <li>{problem}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <article class="card flow">
+        <h2>Example jobs</h2>
+        <ul class="check-list">
+          {service.exampleJobs.map((job) => <li>{job}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need this service now?"
+    text="Send the basics and I will help you scope the work clearly."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/about', label: 'About Owen Air' }}
+  />
+</Layout>
+
+<style>
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+</style>

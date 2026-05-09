@@ -1,0 +1,52 @@
+---
+import Layout from '../components/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'Contact Owen Air | Request Technical Help';
+const description =
+  'Contact Owen Air for practical technical support on the Isle of Man across IT, networking, websites, AV systems and van power.';
+---
+
+<Layout title={title} description={description}>
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="flow">
+        <p class="pill">Contact</p>
+        <h1 class="section-title">Tell me what you need</h1>
+        <p class="section-lead">
+          Send a short summary of the problem, what you have already tried, and your preferred outcome.
+          I will respond with the best next step.
+        </p>
+        <div class="card flow contact-notes">
+          <h2>What helps me respond faster</h2>
+          <ul class="check-list">
+            <li>Your location and whether this is business or personal</li>
+            <li>Any time-sensitive impact on operations</li>
+            <li>Photos or screenshots if relevant to the fault</li>
+          </ul>
+        </div>
+      </article>
+
+      <ContactForm />
+    </div>
+  </section>
+
+  <CTASection
+    title="Prefer to scope the job first?"
+    text="Browse the service areas, then send a quick summary and I will point you to the right next step."
+    primary={{ href: '/services', label: 'View services' }}
+    secondary={{ href: '/about', label: 'About Owen Air' }}
+  />
+</Layout>
+
+<style>
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  .contact-notes {
+    margin-top: 1rem;
+  }
+</style>

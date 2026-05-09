@@ -1,0 +1,95 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <section class="flow">
+      <h2>Owen Air Technical Services</h2>
+      <p>
+        Engineer-led practical support across IT, networks, websites, AV systems and van power.
+        Based on the Isle of Man.
+      </p>
+    </section>
+
+    <section class="flow">
+      <h2>Core services</h2>
+      <ul>
+        <li><a href="/services/it-support">IT & Technical Support</a></li>
+        <li><a href="/services/networking">UniFi & Networking</a></li>
+        <li><a href="/services/websites">Website Development</a></li>
+        <li><a href="/services/av-audio">AV, Audio & Venue Systems</a></li>
+      </ul>
+    </section>
+
+    <section class="flow">
+      <h2>Get in touch</h2>
+      <p>If the issue is technical and annoying, send the details and I will help you map the next step.</p>
+      <a class="button button-secondary" href="/contact">Tell me what you need</a>
+    </section>
+  </div>
+
+  <div class="container footer-bottom">
+    <small>© {new Date().getFullYear()} Owen Air. Isle of Man.</small>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: 4rem;
+    background: rgba(0, 0, 0, 0.13);
+  }
+
+  .footer-grid {
+    padding: 2.5rem 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1.1fr 1fr 1fr;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+  }
+
+  p,
+  li,
+  small {
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li + li {
+    margin-top: 0.45rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--text);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--line);
+    padding: 1rem 0 1.5rem;
+  }
+
+  @media (max-width: 60rem) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 45rem) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

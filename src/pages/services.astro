@@ -1,0 +1,74 @@
+---
+import Layout from '../components/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import { services } from '../data/services';
+
+const title = 'Technical Services | Owen Air';
+const description =
+  'Detailed technical services from Owen Air across IT support, networking, websites, AV systems, van power and practical technical odd jobs.';
+---
+
+<Layout title={title} description={description}>
+  <section class="section" aria-labelledby="services-page-heading">
+    <div class="container flow">
+      <p class="pill">Services</p>
+      <h1 class="section-title" id="services-page-heading">Practical technical services for messy real-world systems</h1>
+      <p class="section-lead">
+        Each service area below includes what I do, the problems I usually solve, who it is for, and
+        example jobs. If your issue spans multiple categories, that is normal.
+      </p>
+    </div>
+  </section>
+
+  {
+    services.map((service) => (
+      <section class="section service-section" id={service.slug} aria-labelledby={`${service.slug}-title`}>
+        <div class="container grid grid-2">
+          <article class="card flow">
+            <h2 class="section-title" id={`${service.slug}-title`}>{service.title}</h2>
+            <p>{service.intro}</p>
+            <p><strong>Who it is for:</strong> {service.audience}</p>
+            <a class="button button-secondary" href={`/services/${service.slug}`}>
+              View {service.title}
+            </a>
+          </article>
+
+          <article class="card flow">
+            <h3>Common problems I solve</h3>
+            <ul class="check-list">
+              {service.commonProblems.map((problem) => <li>{problem}</li>)}
+            </ul>
+            <h3>Example jobs</h3>
+            <ul class="check-list">
+              {service.exampleJobs.map((job) => <li>{job}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+    ))
+  }
+
+  <CTASection
+    title="Not sure which service category applies?"
+    text="Send the problem as you see it and I will translate it into a practical plan."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/about', label: 'Why work with me' }}
+  />
+</Layout>
+
+<style>
+  h1 {
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+  }
+
+  .service-section {
+    padding-top: 0.4rem;
+    padding-bottom: 1.5rem;
+  }
+</style>

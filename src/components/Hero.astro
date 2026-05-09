@@ -1,0 +1,103 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+  primaryCta?: { href: string; label: string };
+  secondaryCta?: { href: string; label: string };
+  tertiaryCta?: { href: string; label: string };
+}
+
+const {
+  eyebrow = 'Isle of Man technical specialist',
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  tertiaryCta
+} = Astro.props;
+---
+
+<section class="hero section">
+  <div class="container hero-grid">
+    <div class="flow">
+      <p class="pill">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="hero-subtitle">{subtitle}</p>
+      <div class="hero-ctas">
+        {primaryCta && (
+          <a class="button button-primary" href={primaryCta.href}>
+            {primaryCta.label}
+          </a>
+        )}
+        {secondaryCta && (
+          <a class="button button-secondary" href={secondaryCta.href}>
+            {secondaryCta.label}
+          </a>
+        )}
+        {tertiaryCta && (
+          <a class="button button-ghost" href={tertiaryCta.href}>
+            {tertiaryCta.label}
+          </a>
+        )}
+      </div>
+    </div>
+
+    <aside class="card hero-note" aria-label="Trust highlights">
+      <h2>Trusted practical support</h2>
+      <ul class="check-list">
+        <li>Based on the Isle of Man with local response and accountability</li>
+        <li>Hands-on engineer with practical diagnostics and clear explanations</li>
+        <li>Modern standards, clean setups and realistic upgrade planning</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 1.2rem;
+    align-items: end;
+    grid-template-columns: 1.25fr minmax(16rem, 0.85fr);
+  }
+
+  h1 {
+    margin: 0;
+    max-width: 22ch;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subtitle {
+    margin: 0;
+    max-width: 68ch;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.8vw, 1.16rem);
+  }
+
+  .hero-ctas {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .hero-note h2 {
+    margin: 0 0 0.9rem;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.04rem;
+  }
+
+  @media (max-width: 58rem) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
