@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTASection from '../components/CTASection.astro';
 import { services, systemsIWorkWith } from '../data/services';
+import { caseStudies } from '../data/caseStudies';
 
 const title = 'Owen Air Technical Services | IT, Websites, Wi-Fi, AV & Technical Help Isle of Man';
 const description =
@@ -26,7 +27,7 @@ const ldJson = {
   </Fragment>
 
   <Hero
-    eyebrow="Isle of Man — Owen Air Technical Services"
+    eyebrow="Isle of Man -- Owen Air Technical Services"
     title="I fix, improve and document the technical systems businesses, venues and trades rely on."
     subtitle="IT support, UniFi networking, Astro websites, venue AV, van power planning and the awkward jobs that cross all of those categories. Based on the Isle of Man. No scripts, no unnecessary replacement, no overcomplication."
     trustPoints={[
@@ -46,7 +47,7 @@ const ldJson = {
       <h2 class="section-title" id="home-services-heading">What I can help with</h2>
       <p class="section-lead">
         Most technical problems do not fit neatly into one category. I work across IT, networking, websites,
-        AV and power systems — and I am most useful when the problem crosses between them.
+        AV and power systems -- and I am most useful when the problem crosses between them.
       </p>
       <div class="grid grid-3">
         {services.map((service) => (
@@ -184,7 +185,7 @@ const ldJson = {
         <h2 class="section-title">You should know how your own system works</h2>
         <p class="section-lead">
           Poor handover is one of the most common reasons a technical problem comes back. Where it matters,
-          I write simple notes so the next person — or you — is not starting from scratch.
+          I write simple notes so the next person -- or you -- is not starting from scratch.
         </p>
         <ul class="check-list">
           <li>Network notes and device lists</li>
@@ -197,13 +198,41 @@ const ldJson = {
     </div>
   </section>
 
+  <section class="section" aria-labelledby="case-studies-preview-heading">
+    <div class="container flow">
+      <h2 class="section-title" id="case-studies-preview-heading">Case studies</h2>
+      <p class="section-lead">
+        Real work on real systems. Written honestly, without invented numbers or overclaiming.
+      </p>
+      <div class="grid grid-3">
+        {caseStudies.map((study) => (
+          <article class="card case-preview-card flow">
+            <div class="case-preview-meta">
+              {study.status === 'ongoing' && (
+                <span class="status-badge-sm">Ongoing</span>
+              )}
+            </div>
+            <h3>{study.title}</h3>
+            <p>{study.summary}</p>
+            <a class="service-link" href={`/case-studies/${study.slug}`}>
+              Read case study <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        ))}
+      </div>
+      <div>
+        <a class="button button-secondary" href="/case-studies">View all case studies</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="not-sure-heading">
     <div class="container">
       <article class="card flow">
         <h2 class="section-title" id="not-sure-heading">Not sure what category it fits into?</h2>
         <p class="section-lead">
-          That is fine. Most jobs do not arrive with a label. Describe what is happening — what system,
-          what the fault looks like, and how often — and I will tell you what I think is going on and what
+          That is fine. Most jobs do not arrive with a label. Describe what is happening -- what system,
+          what the fault looks like, and how often -- and I will tell you what I think is going on and what
           the most sensible next step is.
         </p>
         <div>
@@ -226,5 +255,42 @@ const ldJson = {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  .case-preview-meta {
+    min-height: 1.5rem;
+  }
+
+  .status-badge-sm {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 999px;
+  }
+
+  .case-preview-card h3 {
+    font-size: 1rem;
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .service-link:hover {
+    text-decoration: underline;
   }
 </style>

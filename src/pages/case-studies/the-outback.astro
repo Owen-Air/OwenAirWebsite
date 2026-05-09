@@ -1,0 +1,149 @@
+﻿---
+import Layout from '../../components/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { caseStudies } from '../../data/caseStudies';
+
+const study = caseStudies.find((s) => s.slug === 'the-outback')!;
+
+const title = `${study.title} | Case Studies | Owen Air Technical Services`;
+const description =
+  'Ongoing technical work for The Outback venue on the Isle of Man — website, Cloudflare deployment, UniFi networking, venue audio improvements and AV/lighting support.';
+---
+
+<Layout title={title} description={description}>
+  <section class="section" aria-labelledby="case-study-heading">
+    <div class="container flow">
+      <p class="pill"><a href="/case-studies">Case Studies</a></p>
+      <div class="meta-row">
+        {study.status === 'ongoing' && <span class="status-badge">Ongoing</span>}
+        <div class="tag-list" role="list" aria-label="Category tags">
+          {study.tags.map((tag) => (
+            <span class="pill pill-sm" role="listitem">{tag}</span>
+          ))}
+        </div>
+      </div>
+      <h1 class="section-title" id="case-study-heading">{study.title}</h1>
+      <p class="section-lead lead-large">{study.summary}</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="problem-heading">
+    <div class="container grid grid-2 align-start">
+      <article class="card flow">
+        <h2 id="problem-heading">The problem / brief</h2>
+        <p>{study.problem}</p>
+      </article>
+
+      <article class="card flow">
+        <h2>What I worked on</h2>
+        <ul class="check-list">
+          {study.workedOn.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="technical-heading">
+    <div class="container flow">
+      <h2 id="technical-heading">Technical details</h2>
+      <div class="grid grid-3">
+        {study.technicalDetails.map((group) => (
+          <article class="card flow">
+            <h3>{group.heading}</h3>
+            <ul class="check-list">
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="outcome-heading">
+    <div class="container grid grid-2 align-start">
+      <article class="card flow">
+        <h2 id="outcome-heading">Outcome / current status</h2>
+        <p>{study.outcome}</p>
+      </article>
+
+      <article class="card flow">
+        <h2>What this shows about my work</h2>
+        <p>{study.whatItShows}</p>
+      </article>
+    </div>
+  </section>
+
+  <CTASection
+    title={study.ctaText}
+    text="I can help with websites, networking, audio systems, AV, documentation and the awkward jobs that span all of those things. Isle of Man based."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/case-studies', label: 'View all case studies' }}
+  />
+</Layout>
+
+<style>
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    font-family: 'Sora', sans-serif;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 999px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pill-sm {
+    font-size: 0.75rem;
+    padding: 0.2em 0.65em;
+  }
+
+  .lead-large {
+    font-size: 1.1rem;
+    max-width: 42rem;
+  }
+
+  .align-start {
+    align-items: start;
+  }
+
+  .pill a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pill a:hover {
+    text-decoration: underline;
+  }
+</style>

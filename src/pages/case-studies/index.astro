@@ -1,0 +1,114 @@
+﻿---
+import Layout from '../../components/Layout.astro';
+import CTASection from '../../components/CTASection.astro';
+import { caseStudies } from '../../data/caseStudies';
+
+const title = 'Case Studies | Owen Air Technical Services';
+const description =
+  'Real-world technical work across venue systems, websites, networking, AV and more. Isle of Man based practical technical specialist.';
+---
+
+<Layout title={title} description={description}>
+  <section class="section" aria-labelledby="case-studies-heading">
+    <div class="container flow">
+      <p class="pill">Case Studies</p>
+      <h1 class="section-title" id="case-studies-heading">Real work on real systems</h1>
+      <p class="section-lead">
+        These are real projects, written honestly. No invented numbers, no client quotes, no overclaiming.
+        Where work is ongoing, it says so. Where results are hard to measure exactly, the wording reflects
+        that.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container flow">
+      <div class="case-study-list">
+        {caseStudies.map((study) => (
+          <article class="card case-study-card flow">
+            <div class="case-study-meta">
+              {study.status === 'ongoing' && (
+                <span class="status-badge">Ongoing</span>
+              )}
+              <div class="tag-list" role="list" aria-label="Category tags">
+                {study.tags.map((tag) => (
+                  <span class="pill pill-sm" role="listitem">{tag}</span>
+                ))}
+              </div>
+            </div>
+            <h2 class="case-study-title">{study.title}</h2>
+            <p class="case-study-summary">{study.summary}</p>
+            <a class="button button-secondary" href={`/case-studies/${study.slug}`}>
+              Read case study <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Working on something similar?"
+    text="Describe what you are dealing with and I can tell you whether it is the kind of work I take on."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/services', label: 'View services' }}
+  />
+</Layout>
+
+<style>
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  .case-study-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .case-study-card {
+    max-width: 48rem;
+  }
+
+  .case-study-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border-radius: 999px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pill-sm {
+    font-size: 0.75rem;
+    padding: 0.2em 0.65em;
+  }
+
+  .case-study-title {
+    font-size: 1.25rem;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .case-study-summary {
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+</style>
