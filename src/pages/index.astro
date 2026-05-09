@@ -1,13 +1,13 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTASection from '../components/CTASection.astro';
-import { services } from '../data/services';
+import { services, systemsIWorkWith } from '../data/services';
 
-const title = 'Practical technical help for businesses, venues, vans and websites | Owen Air';
+const title = 'Owen Air Technical Services | IT, Websites, Wi-Fi, AV & Technical Help Isle of Man';
 const description =
-  'Owen Air provides hands-on technical services on the Isle of Man across IT support, networking, websites, AV systems and van power.';
+  'Practical technical help on the Isle of Man for IT support, UniFi networking, Astro/Cloudflare websites, AV systems, venue sound, van power and awkward technical problems.';
 
 const ldJson = {
   '@context': 'https://schema.org',
@@ -26,19 +26,27 @@ const ldJson = {
   </Fragment>
 
   <Hero
-    title="Practical technical help for businesses, venues, vans and websites."
-    subtitle="I design, fix and improve the systems people rely on — from Wi-Fi, websites and Microsoft 365 to AV racks, venue sound systems and off-grid van power."
-    primaryCta={{ href: '/contact', label: 'Request help' }}
+    eyebrow="Isle of Man — Owen Air Technical Services"
+    title="I fix, improve and document the technical systems businesses, venues and trades rely on."
+    subtitle="IT support, UniFi networking, Astro websites, venue AV, van power planning and the awkward jobs that cross all of those categories. Based on the Isle of Man. No scripts, no unnecessary replacement, no overcomplication."
+    trustPoints={[
+      'Isle of Man based',
+      'Hands-on, not call-centre support',
+      'Plain English explanations',
+      'Staged improvements, not unnecessary spend',
+      'Clear documentation when the job is done'
+    ]}
+    primaryCta={{ href: '/contact', label: 'Tell me what you need' }}
     secondaryCta={{ href: '/services', label: 'View services' }}
-    tertiaryCta={{ href: '/contact', label: 'Tell me what you need' }}
+    tertiaryCta={{ href: '/contact', label: 'Ask about a problem' }}
   />
 
   <section class="section" aria-labelledby="home-services-heading">
     <div class="container flow">
-      <h2 class="section-title" id="home-services-heading">Services built around real-world technical work</h2>
+      <h2 class="section-title" id="home-services-heading">What I can help with</h2>
       <p class="section-lead">
-        I work across multiple technical domains, which means I can solve problems that cross boundaries.
-        If the issue touches IT, networking, web, AV or power, I can usually take ownership and simplify it.
+        Most technical problems do not fit neatly into one category. I work across IT, networking, websites,
+        AV and power systems — and I am most useful when the problem crosses between them.
       </p>
       <div class="grid grid-3">
         {services.map((service) => (
@@ -52,90 +60,171 @@ const ldJson = {
     </div>
   </section>
 
-  <section class="section" aria-labelledby="home-help-heading">
+  <section class="section" aria-labelledby="messy-problems-heading">
     <div class="container grid grid-2">
       <article class="card flow">
-        <h2 class="section-title" id="home-help-heading">How I can help</h2>
+        <h2 class="section-title" id="messy-problems-heading">Most systems are messier than they look</h2>
         <p class="section-lead">
-          You get practical support, clear communication and a focused plan. I explain options in plain
-          English, highlight trade-offs, and keep your system maintainable.
+          Bad venue sound might be speaker placement, gain structure, DSP routing, room shape and undocumented
+          cabling all at once. A slow website might be structure, copy, contact flow and mobile performance
+          together. Droppy Wi-Fi is rarely just the router.
+        </p>
+        <p class="section-lead">
+          I look at the whole system before recommending anything.
         </p>
         <ul class="check-list">
-          <li>Diagnostics first, then practical fixes that hold up in daily use</li>
-          <li>Local support on the Isle of Man with direct technical accountability</li>
-          <li>Clear advice on what to fix now versus what can wait</li>
+          <li>Find the actual cause, not just the nearest visible symptom</li>
+          <li>Fix what can be properly fixed</li>
+          <li>Stage improvements when budget or risk requires it</li>
+          <li>Leave systems clearer, safer and easier to maintain</li>
         </ul>
       </article>
 
       <article class="card flow">
-        <h2 class="section-title">Built for real-world problems</h2>
+        <h2 class="section-title">Who I help</h2>
         <p class="section-lead">
-          Technical setups are rarely neat. I am used to mixed systems, partial upgrades and inherited
-          infrastructure. The goal is reliable outcomes, not perfect diagrams.
+          I work best with people who need practical technical help rather than jargon. You might know exactly
+          what you need, or you might only know that something keeps going wrong. Either is fine.
         </p>
         <ul class="check-list">
-          <li>Comfortable with old and new equipment in the same environment</li>
-          <li>Focused on uptime, resilience and practical usability</li>
-          <li>Documentation and handover that non-engineers can follow</li>
+          <li>Local businesses and small teams without internal IT</li>
+          <li>Bars, clubs, venues, DJs and event organisers</li>
+          <li>Trades and service businesses</li>
+          <li>Campervan and van-conversion owners</li>
+          <li>Home users with awkward technical problems</li>
+          <li>People who need someone practical rather than a script</li>
         </ul>
       </article>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="home-use-cases-heading">
+  <section class="section" aria-labelledby="systems-heading">
     <div class="container flow">
-      <h2 class="section-title" id="home-use-cases-heading">Example use cases</h2>
+      <h2 class="section-title" id="systems-heading">Systems I work with</h2>
+      <p class="section-lead">
+        Some of the systems and equipment I regularly work around include the following. This is practical
+        experience in real environments, not a claim of official partnership with every brand listed.
+      </p>
+      <div class="system-badges" role="list" aria-label="Systems and platforms">
+        {systemsIWorkWith.map((item) => (
+          <span class="pill" role="listitem">{item}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="common-problems-heading">
+    <div class="container flow">
+      <h2 class="section-title" id="common-problems-heading">Common problems I solve</h2>
       <div class="grid grid-3">
         <article class="card flow">
-          <h3>Hospitality network cleanup</h3>
+          <h3>Wi-Fi works until the room fills up</h3>
           <p>
-            Reworked a venue network with separate VLANs for guest Wi-Fi, POS and staff systems to stop
-            service interruptions and reduce risk.
+            I check access point placement, channel planning, interference, roaming, VLANs, bandwidth limits
+            and backhaul so the network is more reliable when people actually use it.
           </p>
         </article>
         <article class="card flow">
-          <h3>Website rebuild for local business</h3>
+          <h3>Your website looks fine but does not bring enquiries</h3>
           <p>
-            Replaced a slow legacy site with a fast Astro build on Cloudflare, improving mobile speed,
-            credibility and enquiry flow.
+            I improve structure, copy, calls to action, local SEO, loading speed, contact forms and trust
+            signals so the site does a useful job.
           </p>
         </article>
         <article class="card flow">
-          <h3>Van power upgrade planning</h3>
+          <h3>Your sound system is loud but unclear</h3>
           <p>
-            Mapped a staged lithium and solar upgrade around actual usage, so the owner could improve
-            reliability without replacing everything at once.
+            I review speaker placement, gain structure, DSP routing, crossover points, limiter settings and
+            coverage so the system works with the room.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Your van power setup has grown messy</h3>
+          <p>
+            I help plan safe phased upgrades for lithium batteries, solar, inverters, DC-DC charging,
+            monitoring and practical protection.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Nobody knows how the system is wired</h3>
+          <p>
+            I can trace, document and simplify messy setups so future changes are easier and less risky.
+          </p>
+        </article>
+        <article class="card flow">
+          <h3>Your team wants AI help without the hype</h3>
+          <p>
+            I can set up practical AI workflows for documentation, support replies, process notes and internal
+            admin with sensible data-safety boundaries.
           </p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="home-why-heading">
-    <div class="container flow">
-      <h2 class="section-title" id="home-why-heading">Why work with me</h2>
-      <div class="grid grid-2">
-        <article class="card flow">
-          <h3>Engineer-led and hands-on</h3>
-          <p>
-            I do practical technical work directly rather than passing jobs through layers of account
-            management.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Standards without the nonsense</h3>
-          <p>
-            You get modern methods, reliable components and straightforward decision-making without buzzword-heavy process.
-          </p>
-        </article>
-      </div>
+  <section class="section" aria-labelledby="phased-upgrades-heading">
+    <div class="container grid grid-2">
+      <article class="card flow">
+        <h2 class="section-title" id="phased-upgrades-heading">Phased upgrades, not unnecessary spending</h2>
+        <p class="section-lead">
+          You do not always need to rip everything out and start again. A lot of systems can be improved in
+          stages: fix the worst problem first, stabilise the basics, then plan sensible upgrades when budget
+          allows. This approach works well for Isle of Man businesses, venues and campervan power planning.
+        </p>
+        <ul class="check-list">
+          <li>Start with the biggest pain point</li>
+          <li>Reuse what is still good</li>
+          <li>Replace what is genuinely holding things back</li>
+          <li>Plan upgrades in a sensible order</li>
+          <li>Avoid wasting money on the wrong fix</li>
+        </ul>
+      </article>
+
+      <article class="card flow">
+        <h2 class="section-title">You should know how your own system works</h2>
+        <p class="section-lead">
+          Poor handover is one of the most common reasons a technical problem comes back. Where it matters,
+          I write simple notes so the next person — or you — is not starting from scratch.
+        </p>
+        <ul class="check-list">
+          <li>Network notes and device lists</li>
+          <li>Cabling notes and basic diagrams</li>
+          <li>Password and secrets handling guidance</li>
+          <li>Website and deployment notes</li>
+          <li>Plain-English explanations and upgrade recommendations</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="not-sure-heading">
+    <div class="container">
+      <article class="card flow">
+        <h2 class="section-title" id="not-sure-heading">Not sure what category it fits into?</h2>
+        <p class="section-lead">
+          That is fine. Most jobs do not arrive with a label. Describe what is happening — what system,
+          what the fault looks like, and how often — and I will tell you what I think is going on and what
+          the most sensible next step is.
+        </p>
+        <div>
+          <a class="button button-primary" href="/contact">Describe the problem</a>
+        </div>
+      </article>
     </div>
   </section>
 
   <CTASection
-    title="Need practical help with a technical problem?"
-    text="Describe the issue in plain terms. If it sits between categories, I will still help you map the right fix."
-    primary={{ href: '/contact', label: 'Request help' }}
-    secondary={{ href: '/services', label: 'Explore services' }}
+    title="If it is technical and it needs sorting, get in touch"
+    text="IT, UniFi networking, Astro websites, venue AV, campervan power, or the awkward job that does not fit one category. Isle of Man based. Practical, documented and honest about what needs doing."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/services', label: 'View services' }}
   />
 </Layout>
+
+<style>
+  .system-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

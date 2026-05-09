@@ -1,21 +1,25 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 import { services } from '../data/services';
 
-const title = 'Technical Services | Owen Air';
+const title = 'Technical Services | IT, Networking, Websites, AV & Van Power';
 const description =
-  'Detailed technical services from Owen Air across IT support, networking, websites, AV systems, van power and practical technical odd jobs.';
+  'Explore practical technical services including IT support, UniFi networking, website development, AV/audio systems, van electrical planning and technical rescue.';
 ---
 
 <Layout title={title} description={description}>
   <section class="section" aria-labelledby="services-page-heading">
     <div class="container flow">
       <p class="pill">Services</p>
-      <h1 class="section-title" id="services-page-heading">Practical technical services for messy real-world systems</h1>
+      <h1 class="section-title" id="services-page-heading">Technical services for systems that have to work properly</h1>
       <p class="section-lead">
-        Each service area below includes what I do, the problems I usually solve, who it is for, and
-        example jobs. If your issue spans multiple categories, that is normal.
+        Most jobs cross category boundaries. A venue might need UniFi networking, card machine separation,
+        a website fix and audio troubleshooting in the same conversation. A small business might need
+        Microsoft 365 support, a cleaner network and a website that actually generates enquiries.
+      </p>
+      <p class="section-lead">
+        If your problem spans more than one area, that is exactly the kind of job I take on.
       </p>
     </div>
   </section>
@@ -29,18 +33,26 @@ const description =
             <p>{service.intro}</p>
             <p><strong>Who it is for:</strong> {service.audience}</p>
             <a class="button button-secondary" href={`/services/${service.slug}`}>
-              View {service.title}
+              Get help with {service.contactLabel.toLowerCase()}
             </a>
           </article>
 
           <article class="card flow">
-            <h3>Common problems I solve</h3>
+            <h3>What it covers</h3>
+            <ul class="check-list">
+              {service.whatItCovers.map((item) => <li>{item}</li>)}
+            </ul>
+            <h3>Common problems</h3>
             <ul class="check-list">
               {service.commonProblems.map((problem) => <li>{problem}</li>)}
             </ul>
             <h3>Example jobs</h3>
             <ul class="check-list">
               {service.exampleJobs.map((job) => <li>{job}</li>)}
+            </ul>
+            <h3>Good fit for</h3>
+            <ul class="check-list">
+              {service.goodFitFor.map((fit) => <li>{fit}</li>)}
             </ul>
           </article>
         </div>
@@ -49,10 +61,10 @@ const description =
   }
 
   <CTASection
-    title="Not sure which service category applies?"
-    text="Send the problem as you see it and I will translate it into a practical plan."
-    primary={{ href: '/contact', label: 'Tell me what you need' }}
-    secondary={{ href: '/about', label: 'Why work with me' }}
+    title="Not sure which category applies?"
+    text="Describe what is happening and I will work out what is actually going on. You do not need to arrive with the right label."
+    primary={{ href: '/contact', label: 'Describe the problem' }}
+    secondary={{ href: '/projects', label: 'View project-style examples' }}
   />
 </Layout>
 

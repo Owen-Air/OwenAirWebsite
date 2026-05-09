@@ -1,10 +1,10 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 
-const title = 'About Owen Air | Isle of Man Technical Specialist';
+const title = 'About Owen Air | Practical Technical Specialist Isle of Man';
 const description =
-  'About Owen Air: experienced, hands-on technical support across IT, websites, networking, AV systems and practical system design on the Isle of Man.';
+  'Isle of Man based hands-on technical specialist working across IT support, networking, websites, AV systems, practical documentation and phased upgrades.';
 ---
 
 <Layout title={title} description={description}>
@@ -12,20 +12,28 @@ const description =
     <div class="container grid grid-2">
       <article class="flow">
         <p class="pill">About</p>
-        <h1 class="section-title">Experienced hands-on technical support, based on the Isle of Man</h1>
+        <h1 class="section-title">I like figuring out why things are not working and leaving them in a state that is easier to support</h1>
         <p class="section-lead">
-          I am Owen Air. I help businesses, venues and individuals solve technical problems that are often
-          cross-disciplinary: a mix of IT, networking, websites, AV and practical system design.
+          I am Owen Air, an Isle of Man based technical specialist. My background is IT, but most of the
+          work I do crosses into networks, websites, venue AV, power systems and the gaps between all of
+          those things.
+        </p>
+        <p class="section-lead">
+          I have always been the person who wants to know how something is actually wired, why the fault
+          only happens at certain times, and whether the fix being proposed is the right one or just the
+          nearest available one.
         </p>
       </article>
 
       <article class="card flow">
         <h2>How I work</h2>
         <ul class="check-list">
-          <li>Diagnose first, then fix with a realistic plan</li>
-          <li>Explain technical decisions in plain English</li>
-          <li>Prefer reliable standards over gimmicks</li>
-          <li>Design solutions that are supportable long term</li>
+          <li>I ask what problem you are actually trying to solve</li>
+          <li>I review existing setup before recommending replacement</li>
+          <li>I explain issues in plain English</li>
+          <li>I prefer staged improvements where sensible</li>
+          <li>I document important details</li>
+          <li>I am honest when a specialist or certified person is needed</li>
         </ul>
       </article>
     </div>
@@ -34,36 +42,38 @@ const description =
   <section class="section">
     <div class="container grid grid-2">
       <article class="card flow">
-        <h2>Breadth with technical depth</h2>
+        <h2>What I spend most time on</h2>
         <p>
-          Many real problems do not stay in one lane. A network issue can involve power, cabling, device
-          policy and poor documentation. A venue sound issue can involve DSP, patching and electrical layout.
+          IT support across Microsoft 365, Windows, devices and practical troubleshooting. UniFi networking
+          for businesses and hospitality venues — guest isolation, VLANs, card machine separation and
+          reliable Wi-Fi coverage.
         </p>
         <p>
-          Working across domains means I can connect those dots quickly and avoid partial fixes that fail
-          again later.
+          I also build Astro websites on Cloudflare, work on venue PA and AV systems, and help plan
+          campervan power setups where a staged, safe approach matters.
         </p>
       </article>
 
       <article class="card flow">
-        <h2>Who I help</h2>
+        <h2>What the work usually looks like</h2>
         <p>
-          Small businesses, hospitality teams, venue operators, trades, and individuals who need practical
-          technical work completed to a high standard.
+          A network with additions but no notes. A website that looks fine but does not generate enquiries.
+          A sound system that is loud but not clear across the room. A van setup that needs a proper plan
+          before the next piece of hardware goes in.
         </p>
         <p>
-          If your setup is messy or inherited, that is fine. Most good engineering starts from imperfect
-          systems.
+          I take those situations and work out what is actually going on before recommending anything.
+          Where possible I leave documentation, so the next change is less risky.
         </p>
       </article>
     </div>
   </section>
 
   <CTASection
-    title="If your setup is complicated, that is exactly the point"
-    text="Describe what is not working and what outcome you need. I will help you move from confusion to a practical fix."
-    primary={{ href: '/contact', label: 'Request help' }}
-    secondary={{ href: '/services', label: 'View services' }}
+    title="If the setup is awkward, undocumented or just keeps going wrong, that is usually where I am most useful"
+    text="Describe what is happening and what you want to achieve. I can tell you what I think is going on before any work is agreed."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/projects', label: 'See project-style examples' }}
   />
 </Layout>
 

@@ -1,0 +1,151 @@
+﻿---
+import Layout from '../components/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const title = 'Projects | Owen Air Technical Services';
+const description =
+  'Project-style examples of practical technical work across networking, websites, venue systems, van power planning and technical rescue on the Isle of Man.';
+---
+
+<Layout title={title} description={description}>
+  <section class="section" aria-labelledby="projects-heading">
+    <div class="container flow">
+      <p class="pill">Projects</p>
+      <h1 class="section-title" id="projects-heading">The kind of work I take on</h1>
+      <p class="section-lead">
+        These are representative examples, not client testimonials. They show how I typically approach
+        real-world technical problems across networking, audio, websites, power and inherited systems.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="card flow">
+        <h2>Venue Wi-Fi and secure networks</h2>
+        <h3>The problem</h3>
+        <p>
+          A hospitality venue needs guest Wi-Fi for customers, staff Wi-Fi for internal use, and a secure
+          network for card machines and POS devices.
+        </p>
+        <h3>What I check</h3>
+        <p>
+          Internet path, gateway, AP placement, VLANs, DHCP/DNS, switch ports, firewall rules, bandwidth,
+          guest isolation, and payment device separation.
+        </p>
+        <h3>What I change or recommend</h3>
+        <p>
+          Separate guest, staff and secure device networks. Rate-limit guest traffic, isolate public users,
+          keep payment devices away from customer traffic, and document the setup for easier support.
+        </p>
+      </article>
+
+      <article class="card flow">
+        <h2>Fast Astro and Cloudflare website</h2>
+        <h3>The problem</h3>
+        <p>
+          A local business needs a website that looks credible, loads quickly and makes it easy for people to
+          make contact.
+        </p>
+        <h3>What I check</h3>
+        <p>
+          Site structure, copy clarity, service pages, contact form flow, mobile layout, SEO metadata,
+          performance, deployment setup and security headers.
+        </p>
+        <h3>What I change or recommend</h3>
+        <p>
+          Build a fast Astro site on Cloudflare with clear CTAs, local SEO basics, practical contact handling,
+          and straightforward future maintenance.
+        </p>
+      </article>
+
+      <article class="card flow">
+        <h2>Venue audio system improvement</h2>
+        <h3>The problem</h3>
+        <p>
+          A system is loud in some areas, weak in others, unclear when busy, and difficult to understand
+          because of old equipment and poor documentation.
+        </p>
+        <h3>What I check</h3>
+        <p>
+          Speaker placement, room layout, amp and DSP routing, gain structure, crossover points, limiter
+          settings, cabling, coverage zones and DJ booth monitoring.
+        </p>
+        <h3>What I change or recommend</h3>
+        <p>
+          Map the current system, identify the biggest weak points, tidy routing, set sensible DSP starting
+          points, add fills where needed and plan upgrades in stages.
+        </p>
+      </article>
+
+      <article class="card flow">
+        <h2>Van power planning</h2>
+        <h3>The problem</h3>
+        <p>
+          A campervan has a basic leisure battery and solar setup, but the owner wants lithium batteries,
+          bigger inverter capacity and better monitoring.
+        </p>
+        <h3>What I check</h3>
+        <p>
+          Battery type, solar controller, alternator charging, inverter sizing, cable and fuse sizing, loads,
+          charging sources, monitoring and practical safety layout.
+        </p>
+        <h3>What I change or recommend</h3>
+        <p>
+          Create a phased Victron-style plan for lithium, DC-DC charging, solar integration, monitoring and
+          appropriate protection, in the right order.
+        </p>
+      </article>
+
+      <article class="card flow project-wide">
+        <h2>Technical rescue for inherited systems</h2>
+        <h3>The problem</h3>
+        <p>
+          Multiple people have changed a setup over time, nobody has current notes, and faults could be
+          cabling, networking, configuration, hardware, software or power.
+        </p>
+        <h3>What I check</h3>
+        <p>
+          Physical connections, device list, network routes, account access, logs, power, recent changes and
+          failure patterns.
+        </p>
+        <h3>What I change or recommend</h3>
+        <p>
+          Trace and document the setup, stabilise the system, identify likely root causes, and provide a
+          practical list of what to fix now versus what can be staged later.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need help with something similar?"
+    text="Describe your setup and what keeps going wrong. I can usually work out what is actually happening and suggest the most sensible next step."
+    primary={{ href: '/contact', label: 'Tell me what you need' }}
+    secondary={{ href: '/services', label: 'View services' }}
+  />
+</Layout>
+
+<style>
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .project-wide {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 46rem) {
+    .project-wide {
+      grid-column: span 1;
+    }
+  }
+</style>
