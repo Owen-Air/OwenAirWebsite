@@ -1,0 +1,64 @@
+---
+import Layout from '../components/Layout.astro';
+
+const title = 'Terms of Use | Owen Air Technical Services';
+const description = 'Terms governing use of the Owen Air Technical Services website.';
+const contactEmail = 'hello@owenair.im';
+---
+
+<Layout title={title} description={description}>
+  <section class="section">
+    <div class="container flow legal-page">
+      <p class="pill">Legal</p>
+      <h1 class="section-title">Terms of use</h1>
+      <p class="section-lead">Terms that apply when using this website.</p>
+
+      <div class="prose flow">
+        <p>Last updated: replace before launch.</p>
+
+        <h2>Acceptance</h2>
+        <p>
+          By using this website you agree to these terms. If you do not agree, please do not use the site.
+        </p>
+
+        <h2>Information on this site</h2>
+        <p>
+          Content is provided for general information. Service scope, pricing and availability are confirmed
+          separately when work is agreed.
+        </p>
+
+        <h2>Contact enquiries</h2>
+        <p>
+          Submitting a contact form does not create a client relationship. Scope and terms are confirmed
+          separately where appropriate.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about these terms: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    margin: 0;
+  }
+
+  .legal-page {
+    max-width: 48rem;
+  }
+
+  .prose h2 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem;
+  }
+
+  .prose p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+</style>

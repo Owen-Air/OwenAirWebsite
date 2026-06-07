@@ -3,12 +3,14 @@ import Layout from '../components/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTASection from '../components/CTASection.astro';
-import { services, systemsIWorkWith } from '../data/services';
+import { services } from '../data/services';
 import { caseStudies } from '../data/caseStudies';
 
 const title = 'Owen Air Technical Services | IT, Websites, Wi-Fi, AV & Technical Help Isle of Man';
 const description =
   'Practical technical help on the Isle of Man for IT support, UniFi networking, Astro/Cloudflare websites, AV systems, venue sound, van power and awkward technical problems.';
+
+const featuredCaseStudy = caseStudies.find((study) => study.slug === 'the-outback') ?? caseStudies[0];
 
 const ldJson = {
   '@context': 'https://schema.org',
@@ -27,27 +29,19 @@ const ldJson = {
   </Fragment>
 
   <Hero
-    eyebrow="Isle of Man -- Owen Air Technical Services"
-    title="I fix, improve and document the technical systems businesses, venues and trades rely on."
-    subtitle="IT support, UniFi networking, Astro websites, venue AV, van power planning and the awkward jobs that cross all of those categories. Based on the Isle of Man. No scripts, no unnecessary replacement, no overcomplication."
-    trustPoints={[
-      'Isle of Man based',
-      'Hands-on, not call-centre support',
-      'Plain English explanations',
-      'Staged improvements, not unnecessary spend',
-      'Clear documentation when the job is done'
-    ]}
-    primaryCta={{ href: '/contact', label: 'Tell me what you need' }}
+    compact
+    eyebrow="Owen Air Technical Services · Isle of Man"
+    title="Technical systems that need to work properly."
+    subtitle="IT, UniFi networking, Astro websites, venue AV and van power — plus the awkward jobs that cross categories. Practical fixes, clear documentation."
+    primaryCta={{ href: '/contact', label: 'Get in touch' }}
     secondaryCta={{ href: '/services', label: 'View services' }}
-    tertiaryCta={{ href: '/contact', label: 'Ask about a problem' }}
   />
 
   <section class="section" aria-labelledby="home-services-heading">
     <div class="container flow">
-      <h2 class="section-title" id="home-services-heading">What I can help with</h2>
+      <h2 class="section-title" id="home-services-heading">Services</h2>
       <p class="section-lead">
-        Most technical problems do not fit neatly into one category. I work across IT, networking, websites,
-        AV and power systems -- and I am most useful when the problem crosses between them.
+        Eight areas I work in. Most jobs cross boundaries — that is usually where I am most useful.
       </p>
       <div class="grid grid-3">
         {services.map((service) => (
@@ -61,236 +55,81 @@ const ldJson = {
     </div>
   </section>
 
-  <section class="section" aria-labelledby="messy-problems-heading">
-    <div class="container grid grid-2">
-      <article class="card flow">
-        <h2 class="section-title" id="messy-problems-heading">Most systems are messier than they look</h2>
-        <p class="section-lead">
-          Bad venue sound might be speaker placement, gain structure, DSP routing, room shape and undocumented
-          cabling all at once. A slow website might be structure, copy, contact flow and mobile performance
-          together. Droppy Wi-Fi is rarely just the router.
-        </p>
-        <p class="section-lead">
-          I look at the whole system before recommending anything.
-        </p>
-        <ul class="check-list">
-          <li>Find the actual cause, not just the nearest visible symptom</li>
-          <li>Fix what can be properly fixed</li>
-          <li>Stage improvements when budget or risk requires it</li>
-          <li>Leave systems clearer, safer and easier to maintain</li>
-        </ul>
-      </article>
-
-      <article class="card flow">
-        <h2 class="section-title">Who I help</h2>
-        <p class="section-lead">
-          I work best with people who need practical technical help rather than jargon. You might know exactly
-          what you need, or you might only know that something keeps going wrong. Either is fine.
-        </p>
-        <ul class="check-list">
-          <li>Local businesses and small teams without internal IT</li>
-          <li>Bars, clubs, venues, DJs and event organisers</li>
-          <li>Trades and service businesses</li>
-          <li>Campervan and van-conversion owners</li>
-          <li>Home users with awkward technical problems</li>
-          <li>People who need someone practical rather than a script</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="systems-heading">
-    <div class="container flow">
-      <h2 class="section-title" id="systems-heading">Systems I work with</h2>
-      <p class="section-lead">
-        Some of the systems and equipment I regularly work around include the following. This is practical
-        experience in real environments, not a claim of official partnership with every brand listed.
-      </p>
-      <div class="system-badges" role="list" aria-label="Systems and platforms">
-        {systemsIWorkWith.map((item) => (
-          <span class="pill" role="listitem">{item}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="common-problems-heading">
-    <div class="container flow">
-      <h2 class="section-title" id="common-problems-heading">Common problems I solve</h2>
-      <div class="grid grid-3">
-        <article class="card flow">
-          <h3>Wi-Fi works until the room fills up</h3>
-          <p>
-            I check access point placement, channel planning, interference, roaming, VLANs, bandwidth limits
-            and backhaul so the network is more reliable when people actually use it.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Your website looks fine but does not bring enquiries</h3>
-          <p>
-            I improve structure, copy, calls to action, local SEO, loading speed, contact forms and trust
-            signals so the site does a useful job.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Your sound system is loud but unclear</h3>
-          <p>
-            I review speaker placement, gain structure, DSP routing, crossover points, limiter settings and
-            coverage so the system works with the room.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Your van power setup has grown messy</h3>
-          <p>
-            I help plan safe phased upgrades for lithium batteries, solar, inverters, DC-DC charging,
-            monitoring and practical protection.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Nobody knows how the system is wired</h3>
-          <p>
-            I can trace, document and simplify messy setups so future changes are easier and less risky.
-          </p>
-        </article>
-        <article class="card flow">
-          <h3>Your team wants AI help without the hype</h3>
-          <p>
-            I can set up practical AI workflows for documentation, support replies, process notes and internal
-            admin with sensible data-safety boundaries.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="phased-upgrades-heading">
-    <div class="container grid grid-2">
-      <article class="card flow">
-        <h2 class="section-title" id="phased-upgrades-heading">Phased upgrades, not unnecessary spending</h2>
-        <p class="section-lead">
-          You do not always need to rip everything out and start again. A lot of systems can be improved in
-          stages: fix the worst problem first, stabilise the basics, then plan sensible upgrades when budget
-          allows. This approach works well for Isle of Man businesses, venues and campervan power planning.
-        </p>
-        <ul class="check-list">
-          <li>Start with the biggest pain point</li>
-          <li>Reuse what is still good</li>
-          <li>Replace what is genuinely holding things back</li>
-          <li>Plan upgrades in a sensible order</li>
-          <li>Avoid wasting money on the wrong fix</li>
-        </ul>
-      </article>
-
-      <article class="card flow">
-        <h2 class="section-title">You should know how your own system works</h2>
-        <p class="section-lead">
-          Poor handover is one of the most common reasons a technical problem comes back. Where it matters,
-          I write simple notes so the next person -- or you -- is not starting from scratch.
-        </p>
-        <ul class="check-list">
-          <li>Network notes and device lists</li>
-          <li>Cabling notes and basic diagrams</li>
-          <li>Password and secrets handling guidance</li>
-          <li>Website and deployment notes</li>
-          <li>Plain-English explanations and upgrade recommendations</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="case-studies-preview-heading">
-    <div class="container flow">
-      <h2 class="section-title" id="case-studies-preview-heading">Case studies</h2>
-      <p class="section-lead">
-        Real work on real systems. Written honestly, without invented numbers or overclaiming.
-      </p>
-      <div class="grid grid-3">
-        {caseStudies.map((study) => (
-          <article class="card case-preview-card flow">
-            <div class="case-preview-meta">
-              {study.status === 'ongoing' && (
-                <span class="status-badge-sm">Ongoing</span>
-              )}
-            </div>
-            <h3>{study.title}</h3>
-            <p>{study.summary}</p>
-            <a class="service-link" href={`/case-studies/${study.slug}`}>
-              Read case study <span aria-hidden="true">&rarr;</span>
-            </a>
-          </article>
-        ))}
-      </div>
-      <div>
-        <a class="button button-secondary" href="/case-studies">View all case studies</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="not-sure-heading">
+  <section class="section" aria-labelledby="approach-heading">
     <div class="container">
-      <article class="card flow">
-        <h2 class="section-title" id="not-sure-heading">Not sure what category it fits into?</h2>
+      <article class="card approach-card flow">
+        <h2 class="section-title" id="approach-heading">How I work</h2>
         <p class="section-lead">
-          That is fine. Most jobs do not arrive with a label. Describe what is happening -- what system,
-          what the fault looks like, and how often -- and I will tell you what I think is going on and what
-          the most sensible next step is.
+          I look at the whole system before recommending anything — find the actual cause, fix what can be
+          properly fixed, and leave you with something documented and maintainable.
         </p>
-        <div>
-          <a class="button button-primary" href="/contact">Describe the problem</a>
-        </div>
+        <ul class="check-list approach-list">
+          <li>Diagnose root causes, not just visible symptoms</li>
+          <li>Reuse what is still good; stage upgrades when budget or risk requires it</li>
+          <li>Plain-English explanations and practical handover notes</li>
+          <li>Works across IT, networking, AV, web and power when problems overlap</li>
+        </ul>
       </article>
     </div>
   </section>
+
+  {featuredCaseStudy && (
+    <section class="section" aria-labelledby="case-study-heading">
+      <div class="container">
+        <article class="card featured-case flow">
+          <div class="case-meta">
+            <p class="pill">Case study</p>
+            {featuredCaseStudy.status === 'ongoing' && (
+              <span class="status-badge">Ongoing</span>
+            )}
+          </div>
+          <h2 class="section-title" id="case-study-heading">{featuredCaseStudy.title}</h2>
+          <p class="section-lead">{featuredCaseStudy.summary}</p>
+          <a class="button button-secondary" href={`/case-studies/${featuredCaseStudy.slug}`}>
+            Read case study
+          </a>
+        </article>
+      </div>
+    </section>
+  )}
 
   <CTASection
-    title="If it is technical and it needs sorting, get in touch"
-    text="IT, UniFi networking, Astro websites, venue AV, campervan power, or the awkward job that does not fit one category. Isle of Man based. Practical, documented and honest about what needs doing."
-    primary={{ href: '/contact', label: 'Tell me what you need' }}
-    secondary={{ href: '/services', label: 'View services' }}
+    title="Technical problem to sort?"
+    text="Describe what is going wrong or what you want to build. Isle of Man based, practical and honest about next steps."
+    primary={{ href: '/contact', label: 'Get in touch' }}
   />
 </Layout>
 
 <style>
-  .system-badges {
+  .approach-card {
+    max-width: 44rem;
+  }
+
+  .approach-list {
+    margin-top: 0.5rem;
+  }
+
+  .featured-case {
+    max-width: 44rem;
+  }
+
+  .case-meta {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
   }
 
-  .case-preview-meta {
-    min-height: 1.5rem;
-  }
-
-  .status-badge-sm {
+  .status-badge {
     display: inline-block;
-    padding: 0.15em 0.6em;
-    font-size: 0.7rem;
+    padding: 0.12em 0.55em;
+    font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    background: var(--accent-soft);
     color: var(--accent);
-    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
     border-radius: 999px;
-  }
-
-  .case-preview-card h3 {
-    font-size: 1rem;
-    font-family: 'Sora', sans-serif;
-    margin: 0;
-  }
-
-  .service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    font-size: 0.9rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .service-link:hover {
-    text-decoration: underline;
   }
 </style>

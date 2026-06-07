@@ -1,7 +1,6 @@
 ﻿---
 import Layout from '../components/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
-import CTASection from '../components/CTASection.astro';
 
 const title = 'Contact Owen Air Technical Services';
 const description =
@@ -13,44 +12,25 @@ const description =
     <div class="container grid grid-2">
       <article class="flow">
         <p class="pill">Contact</p>
-        <h1 class="section-title">Tell me what is going wrong, what you are trying to build, or what you want to improve</h1>
+        <h1 class="section-title">Tell me what you need</h1>
         <p class="section-lead">
-          You do not need to know the technical category or have the right vocabulary. Describe what is
-          happening, what you have tried, and what the equipment or system is — I will take it from there.
+          You do not need the right technical label. Describe what is happening and what a good outcome
+          looks like — I will take it from there.
         </p>
-        <div class="card flow contact-notes">
-          <h2>What helps me respond faster</h2>
-          <ul class="check-list">
-            <li>What is not working and roughly when it started</li>
-            <li>What equipment, software or platforms are involved</li>
-            <li>How urgent the situation is</li>
-            <li>What a good outcome looks like</li>
-          </ul>
-          <p class="section-lead">
-            I will not recommend replacing equipment without a practical reason.
-          </p>
-        </div>
+        <ul class="check-list">
+          <li>What is not working and how urgent it is</li>
+          <li>Equipment, software or platforms involved</li>
+          <li>What you have already tried</li>
+        </ul>
       </article>
 
       <ContactForm />
     </div>
   </section>
-
-  <CTASection
-    title="Not sure how to describe it?"
-    text="Pick Technical Rescue on the form, or just write what is happening in plain terms. That is enough."
-    primary={{ href: '/services', label: 'View services' }}
-    secondary={{ href: '/projects', label: 'View project examples' }}
-  />
 </Layout>
 
 <style>
-  h1,
-  h2 {
+  h1 {
     margin: 0;
-  }
-
-  .contact-notes {
-    margin-top: 1rem;
   }
 </style>

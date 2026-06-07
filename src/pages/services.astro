@@ -1,5 +1,6 @@
 ﻿---
 import Layout from '../components/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 import CTASection from '../components/CTASection.astro';
 import { services } from '../data/services';
 
@@ -12,75 +13,32 @@ const description =
   <section class="section" aria-labelledby="services-page-heading">
     <div class="container flow">
       <p class="pill">Services</p>
-      <h1 class="section-title" id="services-page-heading">Technical services for systems that have to work properly</h1>
+      <h1 class="section-title" id="services-page-heading">Technical services</h1>
       <p class="section-lead">
-        Most jobs cross category boundaries. A venue might need UniFi networking, card machine separation,
-        a website fix and audio troubleshooting in the same conversation. A small business might need
-        Microsoft 365 support, a cleaner network and a website that actually generates enquiries.
+        Pick a service for detail on what is covered, common problems and example work. If your job spans
+        more than one area, start with Technical Rescue or just get in touch.
       </p>
-      <p class="section-lead">
-        If your problem spans more than one area, that is exactly the kind of job I take on.
-      </p>
+      <div class="grid grid-3">
+        {services.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={service.shortDescription}
+            href={`/services/${service.slug}`}
+          />
+        ))}
+      </div>
     </div>
   </section>
 
-  {
-    services.map((service) => (
-      <section class="section service-section" id={service.slug} aria-labelledby={`${service.slug}-title`}>
-        <div class="container grid grid-2">
-          <article class="card flow">
-            <h2 class="section-title" id={`${service.slug}-title`}>{service.title}</h2>
-            <p>{service.intro}</p>
-            <p><strong>Who it is for:</strong> {service.audience}</p>
-            <a class="button button-secondary" href={`/services/${service.slug}`}>
-              Get help with {service.contactLabel.toLowerCase()}
-            </a>
-          </article>
-
-          <article class="card flow">
-            <h3>What it covers</h3>
-            <ul class="check-list">
-              {service.whatItCovers.map((item) => <li>{item}</li>)}
-            </ul>
-            <h3>Common problems</h3>
-            <ul class="check-list">
-              {service.commonProblems.map((problem) => <li>{problem}</li>)}
-            </ul>
-            <h3>Example jobs</h3>
-            <ul class="check-list">
-              {service.exampleJobs.map((job) => <li>{job}</li>)}
-            </ul>
-            <h3>Good fit for</h3>
-            <ul class="check-list">
-              {service.goodFitFor.map((fit) => <li>{fit}</li>)}
-            </ul>
-          </article>
-        </div>
-      </section>
-    ))
-  }
-
   <CTASection
     title="Not sure which category applies?"
-    text="Describe what is happening and I will work out what is actually going on. You do not need to arrive with the right label."
-    primary={{ href: '/contact', label: 'Describe the problem' }}
-    secondary={{ href: '/projects', label: 'View project-style examples' }}
+    text="Describe what is happening and I will work out what is actually going on."
+    primary={{ href: '/contact', label: 'Get in touch' }}
   />
 </Layout>
 
 <style>
   h1 {
     margin: 0;
-  }
-
-  h3 {
-    margin: 0;
-    font-family: 'Sora', sans-serif;
-    font-size: 1.05rem;
-  }
-
-  .service-section {
-    padding-top: 0.4rem;
-    padding-bottom: 1.5rem;
   }
 </style>

@@ -5,7 +5,7 @@ interface Props {
   subtitle: string;
   primaryCta?: { href: string; label: string };
   secondaryCta?: { href: string; label: string };
-  tertiaryCta?: { href: string; label: string };
+  compact?: boolean;
 }
 
 const {
@@ -14,12 +14,12 @@ const {
   subtitle,
   primaryCta,
   secondaryCta,
-  tertiaryCta
+  compact = false
 } = Astro.props;
 ---
 
 <section class="hero section">
-  <div class="container hero-grid">
+  <div class:list={['container', compact ? 'hero-compact' : 'hero-grid']}>
     <div class="flow">
       <p class="pill">{eyebrow}</p>
       <h1>{title}</h1>
@@ -35,22 +35,19 @@ const {
             {secondaryCta.label}
           </a>
         )}
-        {tertiaryCta && (
-          <a class="button button-ghost" href={tertiaryCta.href}>
-            {tertiaryCta.label}
-          </a>
-        )}
       </div>
     </div>
 
-    <aside class="card hero-note" aria-label="Trust highlights">
-      <h2>Trusted practical support</h2>
-      <ul class="check-list">
-        <li>Based on the Isle of Man with local response and accountability</li>
-        <li>Hands-on engineer with practical diagnostics and clear explanations</li>
-        <li>Modern standards, clean setups and realistic upgrade planning</li>
-      </ul>
-    </aside>
+    {!compact && (
+      <aside class="card hero-note" aria-label="Trust highlights">
+        <h2>Trusted practical support</h2>
+        <ul class="check-list">
+          <li>Isle of Man based — local response and accountability</li>
+          <li>Hands-on diagnostics with plain-English explanations</li>
+          <li>Staged upgrades, not unnecessary replacement</li>
+        </ul>
+      </aside>
+    )}
   </div>
 </section>
 
@@ -64,6 +61,10 @@ const {
     gap: 1.2rem;
     align-items: end;
     grid-template-columns: 1.25fr minmax(16rem, 0.85fr);
+  }
+
+  .hero-compact {
+    max-width: 44rem;
   }
 
   h1 {

@@ -1,0 +1,71 @@
+---
+import Layout from '../components/Layout.astro';
+
+const title = 'Privacy Policy | Owen Air Technical Services';
+const description = 'Privacy policy for Owen Air Technical Services website and contact enquiries.';
+const contactEmail = 'hello@owenair.im';
+---
+
+<Layout title={title} description={description}>
+  <section class="section">
+    <div class="container flow legal-page">
+      <p class="pill">Legal</p>
+      <h1 class="section-title">Privacy policy</h1>
+      <p class="section-lead">How personal data from website enquiries is collected and used.</p>
+
+      <div class="prose flow">
+        <p>Last updated: replace before launch.</p>
+
+        <h2>Introduction</h2>
+        <p>
+          Owen Air Technical Services explains here how personal data submitted through this website — for
+          example via the contact form — is handled.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          When you submit an enquiry we may collect your name, email address, phone number (if provided),
+          service interest and message content.
+        </p>
+
+        <h2>How we use it</h2>
+        <p>
+          Enquiry data is used to respond to your request, provide services where agreed, and maintain
+          business records where necessary.
+        </p>
+
+        <h2>Retention</h2>
+        <p>
+          Enquiry records are retained only as long as needed for correspondence, service delivery, or legal
+          obligations.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    margin: 0;
+  }
+
+  .legal-page {
+    max-width: 48rem;
+  }
+
+  .prose h2 {
+    margin: 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem;
+  }
+
+  .prose p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+</style>
